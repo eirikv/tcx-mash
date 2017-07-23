@@ -1,0 +1,32 @@
+{
+  "name": "tcx-mash-server",
+  "version": "1.0.0",
+  "description": "Tool for combining and mapping multiple tcx-files together.",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "npm run clean && mkdir server/logs",
+    "start": "concurrently -k \"npm run server:start\" \"npm run client:webpack:watch\"",
+    "clean": "rm -rf client/app && rm -rf server/logs",
+    "client:webpack:watch": "webpack --watch --config client/webpack.config.js",
+    "server:start": "nodemon server/src/index.js --watch client/app > server/logs/log.txt"
+  },
+  "keywords": [
+    "tcx"
+  ],
+  "author": "Eirik Vigeland",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.3",
+    "xml2js": "^0.4.17"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.0",
+    "css-loader": "^0.28.4",
+    "html-webpack-plugin": "^2.28.0",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.4",
+    "nodemon": "^1.11.0",
+    "style-loader": "^0.18.2",
+    "webpack": "^2.6.1"
+  }
+}
