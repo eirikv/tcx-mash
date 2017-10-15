@@ -13,7 +13,7 @@ const _getYAxisLabels = (minHeartRate, deltaHr) => {
     const hr = rate * ratio + minHeartRate;
     return Math.round(hr);
   });
-}
+};
 
 async function getTcx(...fileNames) {
   const files = await Promise.all(
